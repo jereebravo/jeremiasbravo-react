@@ -1,0 +1,11 @@
+.container{
+    height: 400px;
+    width: 600px;
+    margin-top: 150px;
+    border: 1px solid black;
+}
+
+.main{
+    height: 150vh;
+    width: 100%;
+}

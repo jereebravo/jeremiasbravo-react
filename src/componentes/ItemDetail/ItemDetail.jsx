@@ -1,5 +1,7 @@
 import {ButtonCount} from '../buttons/ButtonCount'
 import * as images from '../../assets/img/index'
+import "./ItemDetail.css"
+
 
 
 
@@ -8,19 +10,25 @@ import * as images from '../../assets/img/index'
 export const ItemDetail = ({  name , price , description , stock , image}) => {
  
     return(
-        <div className="card">
-            <div className='cartDetail'>{images.cart}</div>
-            <div className='imageDetail'><img src={image} alt="" /></div>
+        <div>
+            <div className='detalles'>
+            <div >
+                <img className='cartDetail' src={images.cart} alt="" />
+            </div>
+            <div><img className='imageDetail' src={image} alt="" /></div>
             <div className='detailItem'>
-                <p>{name}</p>
-                <p>{description}</p> 
-                <p>{stock}</p>   
-                <p>{price}</p>
+                <p className='titulo'>{name}</p>
+                <p className='description'>{description}</p> 
+                <p className='text'>{stock}</p>   
+                <p className='text'>{"$"}{price}</p>
 
             </div>
             <div> <ButtonCount /> </div>
 
         </div>
 
+
+            </div>
+        
     )
 }

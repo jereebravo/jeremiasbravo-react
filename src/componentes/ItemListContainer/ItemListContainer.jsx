@@ -13,28 +13,27 @@ export const ItemListContainer = () => {
 
  
    useEffect(() => {
-    setIsLoading(true);
     getProducts()
-    
-    .then((res => {
+       .then((res) =>{
+        if(category){
+          let productFilter = res.filter(product => product.category === category);
+          setProducts(productFilter);
+        }
+        else{
+          setProducts(res);
+        }
+       })
+       .catch((error) => console.log(error));
+
+   },[category])
       
-      if(category){
-        let productsFilter = res.filter(product => product.category === category);
-        setProducts(productsFilter);
-        setIsLoading(false)
-      }
-      else{
-        setProducts(res)
-      }
-    }, [category]))
- })
 
 
   
 
   return (
     <div className='main'>
-      { isLoading ? <h2>cargando...</h2> : <ItemList products={products} />}
+      {  <ItemList products={products} />}
      </div>
     
   )

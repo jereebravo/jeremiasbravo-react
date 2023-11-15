@@ -107,7 +107,8 @@ export const getProducts = () => {
   return new Promise((resolve, reject) => {
     
     if (products.length > 0) {
-      resolve(products);
+      
+        resolve(products);
       
     } else {
       reject("No hay productos");
@@ -115,17 +116,15 @@ export const getProducts = () => {
   });
 };
 
-export const getProduct = ( id ) => {
+
+export const getProduct = (id) => {
   return new Promise((resolve, reject) => {
-    
-    const product = products.find( product => product.id === id); 
-    setTimeout( () => { 
-      if(!product) {
-        reject("No se encontró el producto solicitado")
-      } else {
-        resolve(product);
-      }
-     }, 2000 )
-    
+    const product = products.find(product => product.id.toString() === id.toString());
+
+    if (!product) {
+      reject("No se encontró el producto solicitado");
+    } else {
+      resolve(product);
+    }
   });
 };

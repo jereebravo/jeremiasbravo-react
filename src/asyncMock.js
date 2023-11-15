@@ -1,6 +1,6 @@
 import * as images from "./assets/img/index";
 
-let productos = [
+let products = [
   {
     id: 1,
     name: "oso negro",
@@ -102,4 +102,30 @@ let productos = [
   },
 ];
 
-export default productos; 
+
+export const getProducts = () => {
+  return new Promise((resolve, reject) => {
+    
+    if (products.length > 0) {
+      resolve(products);
+      
+    } else {
+      reject("No hay productos");
+    }
+  });
+};
+
+export const getProduct = ( id ) => {
+  return new Promise((resolve, reject) => {
+    
+    const product = products.find( product => product.id === id); 
+    setTimeout( () => { 
+      if(!product) {
+        reject("No se encontró el producto solicitado")
+      } else {
+        resolve(product);
+      }
+     }, 2000 )
+    
+  });
+};

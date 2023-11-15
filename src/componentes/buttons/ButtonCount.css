@@ -1,0 +1,25 @@
+.buttonCount{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 300px;
+    background-color: red;
+}
+
+.contador{
+    width: 100px;
+    background-color: red;
+}
+
+.sumar{
+    margin-right: 5px;
+}
+.restar{
+    margin-left: 5px;
+}
+
+.agregarCarrito{
+    margin: 5px;
+}

@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { ItemList } from '../ItemList/ItemList'
+import productos from "../../asyncMock"
 import "./ItemListContainer.css"
 
-export const ItemListContainer = ({greeting}) => {
+
+export const ItemListContainer = () => {
+let [products , setProducts] = useState([])
+
+  const getProducts = () => {
+    return new Promise((resolve , reject) => {
+         resolve(productos);
+       });
+  };
+
+   useEffect(() => {
+    getProducts()
+    .then((res => {
+      setProducts(res);
+    }))
+ })
+
+
+  
+
   return (
-    <main className='main'>
-      <div className='container'>
-      <p>{greeting}</p>
-    </div>
-    </main>
+    <div className='main'>
+      {<ItemList products={products} />}
+     </div>
     
   )
 }

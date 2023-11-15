@@ -2,6 +2,10 @@
     height: 100px;
 }
 
+.logo{
+    height: 80px;
+    width: 100px;
+}
 .color{
     background-color: red;
 }

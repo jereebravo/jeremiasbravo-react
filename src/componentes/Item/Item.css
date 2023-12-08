@@ -40,7 +40,12 @@ font-weight: 500;
 }
 
 .buton-detail{
-    background-color: red;
+    background-color:#8B0000;
+    border-radius: 10px;
+    border: 1px solid #008B8B;
     margin-bottom: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-weight: 900;
     
 }

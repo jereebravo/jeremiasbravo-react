@@ -6,20 +6,40 @@
     height: 50px;
     width: 300px;
    
-}
-
-.contador{
-    width: 100px;
-    
+   
 }
 
 .sumar{
-    margin-right: 5px;
+    margin-right: 8px;
+    height: 25px;
+    width: 25px;
+    background-color: #8B0000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    color: white;
 }
 .restar{
-    margin-left: 5px;
+    margin-left: 8px;
+    height: 25px;
+    width: 25px;
+    background-color: #8B0000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800; 
+    color: white;  
+    
 }
 
 .agregarCarrito{
     margin: 5px;
+    padding-bottom: 10px;
+    height: 30px;
+    padding-left: 8px;
+}
+
+.addCart{
+   background-color: #8B0000;
+   font-family: 'Courier New', Courier, monospace;
+   font-weight: 800;
+   color: white
+
 }

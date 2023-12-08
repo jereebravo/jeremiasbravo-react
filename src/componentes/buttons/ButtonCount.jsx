@@ -19,7 +19,7 @@ export const ButtonCount = () => {
 
   }
 
-  console.log(count);
+  
   
  
  
@@ -29,12 +29,12 @@ export const ButtonCount = () => {
     return (
     <div className='buttonCount'>
         <div className='Contador'>
-            <button className='sumar' onClick={sumar}> + </button>
+            <button className='sumar' onClick={restar}> - </button>
             <strong>{count}</strong>
-            <button className='restar' onClick={restar}> - </button>
+            <button className='restar' onClick={sumar}> + </button>
         </div>
         <div className='agregarCarrito'>
-            <button>agregar al carrito</button>
+            <button className='addCart'>agregar al carrito</button>
         </div>
 
     </div>

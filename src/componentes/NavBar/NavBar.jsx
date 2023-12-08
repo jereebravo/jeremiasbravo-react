@@ -1,10 +1,28 @@
 import React from 'react'
 import "./NavBar.css";
+import {db} from "../../config/firebaseConfig"
+import {useState} from "react"
+import {query , collection , where , getDocs} from "firebase/firestore"
 import * as images from "../../assets/img"
 import {Carrito} from '../cartWidget/CartWidget'
 import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
+
+  const [products , setProducts] = useState([]);
+   
+  const getProductsDB = (category) => {
+      const myProducts = category
+        ? query(collection(db, "products"), where("category", "==", category))
+        : query(collection(db, "products"));
+      getDocs(myProducts).then((resp) => {
+        const productList = resp.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setProducts(productList);
+      });
+    };
+
+
+
   return (
     <header >
 <nav className="navbar navbar-expand-lg bg-body-tertiary Header ">

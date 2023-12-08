@@ -1,8 +1,9 @@
 import React, { useState , useEffect } from 'react'
 import {db} from "../../config/firebaseConfig"
-import {query , collection, getDocs} from "firebase/firestore"
+import {query , collection, getDocs , where} from "firebase/firestore"
 import { ItemList } from '../ItemList/ItemList'
 import "./ItemListContainer.css"
+import { useParams } from 'react-router-dom'
 
 
 export const ItemListContainer = () => {
@@ -10,18 +11,24 @@ export const ItemListContainer = () => {
 
   
       const [products , setProducts] = useState([]);
+      const category = useParams().category;
    
       useEffect( () =>{
-          const myProducts = query(collection(db , "products"));
-             getDocs(myProducts)
-                .then((resp) =>{
-                  const productsList = resp.docs.map((doc) => ({id: doc.id , ...doc.data()}))
-                  setProducts(productsList);
-                })
-                
+        const productsRef = collection(db , "products");
+        const q = category ? query(productsRef , where("category" , "==" , category)) : productsRef;
+
+        getDocs(q)
+          .then((resp) => {
+
+            setProducts(
+              resp.docs.map((doc) => {
+                return {...doc.data(), id: doc.id}
+              })
+            )
+          })
   
   
-      }, [])
+      }, [category])
 
  
 

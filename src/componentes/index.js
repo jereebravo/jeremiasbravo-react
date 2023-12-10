@@ -6,3 +6,4 @@ export * from './ItemListContainer/ItemListContainer';
 export * from './NavBar/NavBar';
 export * from './buttons/ButtonCount';
 export * from './cartWidget/CartWidget';
+export * from './index';

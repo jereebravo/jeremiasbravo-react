@@ -48,7 +48,11 @@ export const NavBar = () => {
       </ul>
     </div>
     <div>
-      <Carrito />
+      
+        <Link to={"/cart"}>
+        <Carrito />
+        </Link>
+        
     </div>
   </div>
 </nav>

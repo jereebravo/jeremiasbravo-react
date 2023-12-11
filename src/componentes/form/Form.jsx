@@ -5,12 +5,36 @@ import "./Form.css"
 export const Form = () => {
 
   const [form , setForm] = useState({
-    
+    nombre: "",
+    apellido: "",
+    telefono:"",
+    email:"",
+    contraseña:""
 
   })
     const handlesubmit = (e) => {
         e.preventDefault();
-        console.log(e);
+        console.log("enviado" , form);
+        setTimeout(resetForm , 1000);
+      }
+
+    const handleForm = (e) => {
+      setForm({
+        ...form,
+        [e.target.name] : e.target.value,
+      })
+      
+
+    }
+
+    const resetForm = () => {
+      setForm({
+        nombre: "",
+        apellido: "",
+        telefono:"",
+        email:"",
+        contraseña:""
+      })
     }
 
 
@@ -27,15 +51,22 @@ export const Form = () => {
             type="text"
             className="form-control"
             id="exampleInputPassword1"
+            value={form.nombre}
+            name="nombre"
+            onChange={handleForm}
           />
         </div>
         <div className="mb-3">
            <label htmlFor="exampleInputPassword1" className="form-label">
+            apellido
           </label>
           <input
             type="text"
             className="form-control"
             id="exampleInputPassword1"
+            value={form.apellido}
+            name="apellido"
+            onChange={handleForm}
           />
         </div>
       <div className="mb-3">
@@ -46,6 +77,9 @@ export const Form = () => {
             type="phone"
             className="form-control"
             id="exampleInputPassword1"
+            value={form.telefono}
+            name="telefono"
+            onChange={handleForm}
           />
         </div>
         <div className="mb-3">
@@ -57,6 +91,9 @@ export const Form = () => {
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            value={form.email}
+            name="email"
+            onChange={handleForm}
           />
           <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
@@ -70,6 +107,9 @@ export const Form = () => {
             type="password"
             className="form-control"
             id="exampleInputPassword1"
+            value={form.contraseña}
+            name="contraseña"
+            onChange={handleForm}
           />
         </div>
         <button type="submit" className="btn btn-primary">

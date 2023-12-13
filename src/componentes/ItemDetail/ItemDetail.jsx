@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { ButtonCount } from "../buttons/ButtonCount";
-import * as images from "../../assets/img/index";
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
 import "./ItemDetail.css";
 
-export const ItemDetail = ({ name, price, description, stock, image }) => {
+export const ItemDetail = ({ name, price, description, stock, image , id }) => {
+  
+  
+  
+
+
+
+
   return (
     <>
      <div className="Main">
@@ -21,7 +30,14 @@ export const ItemDetail = ({ name, price, description, stock, image }) => {
         </div>
         <div>
           {" "}
-          <ButtonCount />{" "}
+          <ButtonCount 
+          name={name}
+          price={price}
+          id={id}
+          stock={stock}
+          image={image}
+          />
+          {" "}
         </div>
       </div>
     </div>

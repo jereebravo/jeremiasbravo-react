@@ -2,21 +2,39 @@ import React from "react";
 import { useState } from "react";
 import "./Form.css"
 
-export const Form = () => {
+export const Form = ({onFormSubmit}) => {
+
 
   const [form , setForm] = useState({
     nombre: "",
     apellido: "",
     telefono:"",
     email:"",
+    confirmEmail:"",
     contraseña:""
 
   })
+
+  const [error , setError] = useState("")
     const handlesubmit = (e) => {
         e.preventDefault();
-        console.log("enviado" , form);
-        setTimeout(resetForm , 1000);
+
+        if (form.email === form.confirmEmail){
+          setError("");
+          console.log("enviado" , form);
+          if (onFormSubmit) {
+            onFormSubmit();
+          }
+          resetForm()
+
+        }
+        else{
+          setError('los correos electronicos no coinciden');
+        }
+        
       }
+
+
 
     const handleForm = (e) => {
       setForm({
@@ -33,15 +51,18 @@ export const Form = () => {
         apellido: "",
         telefono:"",
         email:"",
+        confirmEmail:"",
         contraseña:""
       })
     }
 
+    const isSubmitDisabled = form.email !== form.confirmEmail;
+
 
 
   return (
-    <div className="Formulario w-100">
-      <form className=" w-25  p-3 h-100  border h-75" onSubmit={handlesubmit}>
+    <div className="Formulario w-100 h-100">
+      <form className=" w-25  p-3 h-100  border" onSubmit={handlesubmit}>
       <h1>REGISTRATE</h1>
       <div className="mb-3">
            <label htmlFor="exampleInputPassword1" className="form-label">
@@ -100,6 +121,23 @@ export const Form = () => {
           </div>
         </div>
         <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            confirm email
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            value={form.confirmEmail}
+            name="confirmEmail"
+            onChange={handleForm}
+          />
+          <div id="emailHelp" className="form-text">
+           Los correos electronicos deben coincidir.
+          </div>
+        </div>
+        <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Password
           </label>
@@ -112,7 +150,7 @@ export const Form = () => {
             onChange={handleForm}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" disabled={isSubmitDisabled}>
           Submit
         </button>
       </form>

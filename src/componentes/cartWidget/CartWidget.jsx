@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import * as images from "../../assets/img"
 import "./Cart.css"
+import { CartContext } from '../../context/cartContext'
 
 export const Carrito = () => {
+  const { quantityInCart } = useContext(CartContext);
+
   return (
     <div className='carrito'>
-      <div className='notificacion'>1</div>
+      <div className='notificacion'>{quantityInCart()}</div>
         <img src={images.cart} alt="carrito" className='icono' />
     </div>
   )
